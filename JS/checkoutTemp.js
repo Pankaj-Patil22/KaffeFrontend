@@ -1,4 +1,4 @@
-import Routes from "./routes.js";
+// import Routes from "./routes.js";
 let imageData = {};
 let i = 0;
 
@@ -138,9 +138,9 @@ async function renderSummary() {
 
 async function postData(url = "", data = {}) {
   // Default options are marked with *
-  console.log(Routes.transactionData);
+  console.log("http://127.0.0.1:5000/transactionData/");
   let responseJson = "";
-  const response = await fetch(Routes.transactionData, {
+  const response = await fetch("http://127.0.0.1:5000/transactionData/", {
     method: "POST",
     mode: "cors",
     credentials: "omit",
@@ -164,7 +164,7 @@ async function postData(url = "", data = {}) {
 }
 
 document.getElementById("checkout").addEventListener("click", () => {
-  postData(Routes.transactionData, makeThePostData()).then((data) => {
+  postData("http://127.0.0.1:5000/transactionData/", makeThePostData()).then((data) => {
     console.log(data); // JSON data parsed by `data.json()` call
     if (data.success == true) {
       console.log("success Boss", data);

@@ -1,4 +1,4 @@
-import Routes from "./routes.js";
+// import Routes from "./routes.js";
 
 let menuData = [];
 let items_placed = {};
@@ -56,7 +56,7 @@ function moveToPlacedSelection(item_id, price, name) {
 }
 
 async function fetchMenuData() {
-  let url = Routes.menu;
+  let url = 'http://127.0.0.1:5000/getMenu/';
   try {
     let res = await fetch(url);
     return await res.json();

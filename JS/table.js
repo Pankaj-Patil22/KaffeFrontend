@@ -247,7 +247,11 @@ function updateData() {
   hour = parseInt(document.getElementById("selectTS").value) + 7;
   today = document.getElementById("datefield").value;
 
-  timmingsAdjust(hour, today);
+  if (document.getElementById("datefield").value != getDateInFormat()) {
+    getAvailableTimmings();
+  } else {
+    timmingsAdjust(hour, today);
+  }
 
   localStorage.setItem(
     "choosenDate",
@@ -297,7 +301,6 @@ function proocedToMenu() {
   console.log("choosenTimeSlot", localStorage.getItem("choosenTimeSlot"));
   console.log("choosentables", localStorage.getItem("choosentables"));
 
-
   // this doesnt work it takes by default the first date
   if (localStorage.getItem("choosenDate") == null) {
     alert("Please select a date");
@@ -317,12 +320,11 @@ function proocedToMenu() {
     return;
   }
 
-  // for menu page to check before adding items to cart if the tables are booked or not 
+  // for menu page to check before adding items to cart if the tables are booked or not
   localStorage.setItem("isTableBooked", true);
   if (localStorage.getItem("isMenuBooked") == "true") {
     window.location.href = "checkoutTemp.html";
-  }
-  else {
+  } else {
     window.location.href = "menu.html";
   }
 }
@@ -338,9 +340,10 @@ document
     date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
   );
 
-document.getElementById("tableSubmit").innerText = 
-  localStorage.getItem("isMenuBooked") == "true" ? "Proceed to checkout" : "Proceed to menu";
-
+document.getElementById("tableSubmit").innerText =
+  localStorage.getItem("isMenuBooked") == "true"
+    ? "Proceed to checkout"
+    : "Proceed to menu";
 
 getTablePrices();
 getTableSessions();
