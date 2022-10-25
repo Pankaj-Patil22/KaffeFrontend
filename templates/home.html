@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Home Page</title>
+  <link rel="icon" type="image/x-icon" href="../Images/logo.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/material-ui/4.12.4/index.js" integrity="sha512-wEnX3bNd/CdyrOFR0KIGlHihK/w9x3/It8Vc18aymEF/F/f1q0Mq8T+GSxF1wYUACLEGECapuIYQdQlKY1LBJw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>  
+  <script src="../JS/home.js" defer></script>
+</head>
+<body style="background-color: #FBFCFC ;">
+
+  <nav class="navbar navbar-expand-sm navbar-dark" style="background: rgba(11, 11, 11, 0.872); border: none; box-shadow: 10px 3px 20px 20px rgb(144, 200, 220);">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="home.html">
+            <img src="../Images/logo.png" alt="Avatar Logo" style="width: 70px;" class="rounded-pill">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <div class="mx-auto">
+                <ul class="navbar-nav text-center">
+                    <li class="nav-item" style="padding-right: 200px;">
+                        <a class="nav-link " href="home.html" style="color: #e0eff1; font-size: 25px; font-family:Garamond"><strong>Home</strong></a>
+                    </li>
+                    <li class="nav-item" style="padding-right: 200px;">
+                        <a class="nav-link" href="tables.html"  style="color: #e0eff1; font-size: 25px; font-family:Garamond"><strong>Tables</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html"  style="color: #e0eff1; font-size: 25px; font-family:Garamond"><strong>Menu</strong></a>
+                    </li> 
+                </ul>
+            </div> 
+            <ul class="navbar-nav text-center">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"  style="color: #e0eff1; font-size: 25px; font-size: 25px; font-family:Garamond""><strong>Orders</strong></a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="history.html">Order History</a></li>
+                        <li><a class="dropdown-item" href="status.html">Order Status</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Carousel -->
+<div id="demo" class="carousel slide" data-bs-ride="carousel" >
+
+    <!-- Indicators/dots -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+    </div>
+    
+    <!-- The slideshow/carousel -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="d-flex justify-content-center">
+            <img src="../Images/carousal1.jpg" alt="Los Angeles" class="d-block" style="width:75%; height:50%">
+            <div class="carousel-caption" style="background: rgba(54, 21, 0, 0.3);">
+                <h3>Welcome to Kaffe</h3>
+                <p>Have a great time in Kaffe!</p>
+            </div>
+        </div>
+    </div>
+    <div class="carousel-item">
+        <div class="d-flex justify-content-center">
+            <img src="../Images/carousal2.jpg" alt="Chicago" class="d-block" style="width:75%; height:50%">
+            <div class="carousel-caption" style="background: rgba(54, 21, 0, 0.3);">
+                <h3>Table</h3>
+                <p>Amazing view from selected tables!</p>
+            </div>
+        </div> 
+    </div>
+    <div class="carousel-item">
+        <div class="d-flex justify-content-center">
+            <img src="../Images/carousal3.jpg" alt="New York" class="d-block" style="width:75%; height:50%">
+            <div class="carousel-caption" style="background: rgba(54, 21, 0, 0.3);">
+                <h3>Beverages</h3>
+                <p>We all love coeffe!</p>
+            </div>
+        </div>  
+    </div>
+</div>
+
+    
+    <!-- Left and right controls/icons -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" style="filter: invert(100%);"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+      <span class="carousel-control-next-icon" style="filter: invert(100%);"></span>
+    </button>
+  </div>
+
+</body>
+</html>
+
+<div class="mt-4 p-5 rounded">
+    <h1 style="text-align: center;" class="featurette-heading">Let’s meet at the Kaffe</h1>
+    <br>
+    <h3 style="text-align: center;" class="lead">
+        <span style="font-size: 24px;">
+            <strong>
+                At Café you will find yourselves amongst friends and neighbors, amongst foodies and yogis, young and old. You will be a part of a celebration of one of life’s simplest pleasures and one of the most joyful acts we as humans can do: 
+            </strong>
+        </span>
+    </h3>
+    <h3 style="text-align: center;">
+        <span style="font-size: 24px;" class="lead">
+            <strong>
+                SHARE A MEAL, HAVE A DRINK
+            </strong>
+        </span>
+    </h3>
+</div>
+
+<!-- Marketing messaging and featurettes
+      ================================================== -->
+      <!-- Wrap the rest of the page in another container to center all the content. -->
+
+      <div class="container marketing">
+        <!-- START THE FEATURETTES -->
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">The bird feeder <span class="text-muted">It'll blow your mind.</span></h2>
+            <p class="lead">Fact is, food tastes better when it’s real, when it’s prepared with love and when it’s shared, that’s why we welcome the health conscious, non-dieters, vegans, vegetarian, paleo, keto and gluten-free eaters to gather ‘round our table and enjoy a delicious meal made with ingredients you can trust.</p><br>
+            <p class="lead">We take pride in sourcing the highest quality ingredients we can get from local organic farms, not only because they taste better and deliver maximum nutrition, but because is better for the planet.</p>
+          </div>
+          <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" src="../Images/home1.jpg" alt="Generic placeholder image">
+          </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+          <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Wet your beak <span class="text-muted">See for yourself.</span></h2>
+            <p class="lead">Good food needs a good companion. Our coffee program consists of drinks that will compliment our menu, and our philosophy, ethically sourced beans, house-made syrups, wellness lattes made with adaptogenic herbs and mushrooms, and alternative milks. Organic, herbal teas, bring a little exotic wonder while our local kombucha brewers bring the probiotics into the mix.</p><br>
+            <p class="lead">For those seeking a more spirited drink, we have a small well curated selection of Mimosas, Beer & Wines that will make your end-of-day escape, extra special and compliment the fresh ingredients on your plate.</p>
+          </div>
+          <div class="col-md-5 order-md-1">
+            <img class="featurette-image img-fluid mx-auto" src="../Images/home2.jpg" alt="Generic placeholder image">
+          </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">A dedicated gluten-free bakery & cafe. <span class="text-muted">Checkmate.</span></h2>
+            <p class="lead">Owned and operated by Chefs Gillian and Alam Muralles, Lilac Pâtisserie is nationally renowned for gluten-free cakes and baked goods that redefine deliciousness. Located in downtown Santa Barbara, California, the beautiful bakery café is open seven days a week serving breakfast, brunch and lunch entrees in addition to a dedicated menu of gluten-free cakes, breads and treats. Lilac Pȃtisserie also ships a selection of baked goods across California and serves Santa Barbara locals through event catering and specialized wedding and celebration cake artistry.</p>
+          </div>
+          <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" src="../Images/home3.jpg" alt="Generic placeholder image">
+          </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <!-- /END THE FEATURETTES -->
+
+      </div><!-- /.container -->
+
+
+      <!-- FOOTER -->
+      <footer class="container">
+        <p class="float-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2017-2018 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+      </footer>
