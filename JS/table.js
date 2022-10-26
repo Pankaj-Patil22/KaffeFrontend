@@ -166,6 +166,7 @@ function getAvailableTimmings() {
 
 function timmingsAdjust(hour, today) {
   timeslot = document.getElementById("selectTS").value;
+  console.log("today maybe", today);
 
   if (hour >= 8 && hour <= 20) {
     if (document.getElementById("datefield").value == getDateInFormat()) {
@@ -216,7 +217,7 @@ function updateDataFirstRun() {
     "choosenDate",
     document.getElementById("datefield").value
   );
-  console.log("choosen date", localStorage.getItem("choosenDate"));
+  console.log("choosen date first run", localStorage.getItem("choosenDate"));
 
   localStorage.setItem(
     "choosenTimeSlot",
@@ -239,25 +240,30 @@ function updateDataFirstRun() {
   );
 
   resetTableSelection();
-  document.getElementById("selectTS").setAttribute("onchange", "updateData()");
-  document.getElementById("datefield").setAttribute("onchange", "updateData()");
+  document
+    .getElementById("selectTS")
+    .setAttribute("onchange", "updateData(this)");
+  document
+    .getElementById("datefield")
+    .setAttribute("onchange", "updateData(this)");
 }
 
-function updateData() {
+function updateData(change) {
   hour = parseInt(document.getElementById("selectTS").value) + 7;
-  today = document.getElementById("datefield").value;
+  todayNew = document.getElementById("datefield").value;
 
-  if (document.getElementById("datefield").value != getDateInFormat()) {
+  console.log("today new", today);
+  if (change.id == "datefield") {
     getAvailableTimmings();
-  } else {
-    timmingsAdjust(hour, today);
   }
+  console.log("today old", today);
+  timmingsAdjust(hour, todayNew);
 
   localStorage.setItem(
     "choosenDate",
     document.getElementById("datefield").value
   );
-  console.log("choosen date", localStorage.getItem("choosenDate"));
+  console.log("choosen date update data", localStorage.getItem("choosenDate"));
 
   localStorage.setItem(
     "choosenTimeSlot",
@@ -297,7 +303,10 @@ function resetTableSelection() {
 
 function proocedToMenu() {
   console.log("prooced to menu");
-  console.log("choosenDate", localStorage.getItem("choosenDate"));
+  console.log(
+    "choosenDate proceed to menu",
+    localStorage.getItem("choosenDate")
+  );
   console.log("choosenTimeSlot", localStorage.getItem("choosenTimeSlot"));
   console.log("choosentables", localStorage.getItem("choosentables"));
 
@@ -339,11 +348,6 @@ document
     "min",
     date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
   );
-
-document.getElementById("tableSubmit").innerText =
-  localStorage.getItem("isMenuBooked") == "true"
-    ? "Proceed to checkout"
-    : "Proceed to menu";
 
 getTablePrices();
 getTableSessions();
