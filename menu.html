@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Feedback</title>
-  <link rel="icon" type="image/x-icon" href="../Images/logo.png">
+  <title>Menu Page</title>
+  <link rel="icon" type="image/x-icon" href="./Images/logo.png">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/material-ui/4.12.4/index.js" integrity="sha512-wEnX3bNd/CdyrOFR0KIGlHihK/w9x3/It8Vc18aymEF/F/f1q0Mq8T+GSxF1wYUACLEGECapuIYQdQlKY1LBJw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>  
-  <script src="../JS/feedback.js" defer></script>
-  <link rel="stylesheet" href="../CSS/feedback.css" />
-  <title>Feedback</title>
-  </head>
-  <body style="background-color: #FBFCFC ;">
+  <script src="JS/menu.js" defer></script>
+  <link href="CSS/styles.css" rel="stylesheet">
+</head>
+<body style="background-color: #FBFCFC ;">
 
     <nav class="navbar navbar-expand-sm navbar-dark" style="background: rgba(11, 11, 11, 0.872); border: none; box-shadow: 10px 3px 20px 20px rgb(144, 200, 220);">
       <div class="container-fluid">
-          <a class="navbar-brand" href="home.html">
-              <img src="../Images/logo.png" alt="Avatar Logo" style="width: 70px;" class="rounded-pill">
+          <a class="navbar-brand" href="index.html">
+              <img src="./Images/logo.png" alt="Avatar Logo" style="width: 70px;" class="rounded-pill">
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
               <span class="navbar-toggler-icon"></span>
@@ -26,7 +25,7 @@
               <div class="mx-auto">
                   <ul class="navbar-nav text-center">
                       <li class="nav-item" style="padding-right: 200px;">
-                          <a class="nav-link " href="home.html" style="color: #e0eff1; font-size: 25px; font-family:Garamond"><strong>Home</strong></a>
+                          <a class="nav-link " href="index.html" style="color: #e0eff1; font-size: 25px; font-family:Garamond"><strong>Home</strong></a>
                       </li>
                       <li class="nav-item" style="padding-right: 200px;">
                           <a class="nav-link" href="tables.html"  style="color: #e0eff1; font-size: 25px; font-family:Garamond"><strong>Tables</strong></a>
@@ -48,53 +47,19 @@
           </div>
       </div>
   </nav>
-  <body>
-    <div class="wrapper-div ">
-      <div class="Overall-feedback row justify-content-around" id="overall_feedback">
-        <div style ="width:50rem; margin: 40px 0px; padding: 40px 50px; border-radius: 20px; border: none; box-shadow: 1px 5px 10px 1px rgb(144, 200, 220);">
-          <div style="text-align: center;"><h4><strong>Overall Rating:</strong></h4></div>
-          <div class="overall-rating" style="text-align: center;">
-            <input
-              type="range"
-              min="0"
-              max="5"
-              value="0"
-              id="overall_rating"
-              onchange="changeOverallRating()"
-            />
-            <span id="overall_rating_value">0</span>
-          </div>
-          <div class="overall-review" style="text-align: center;">
-            <textarea
-              name="overall-review"
-              id="overall_review"
-              cols="50"
-              rows="5"
-              placeholder="Write your review here..."
-              style="background-color: #d6ebf2df;
-                padding: 8px 15px 8px 15px;
-                width: 100%;
-                border-radius: 5px !important;
-                box-sizing: border-box;
-                border: 1px solid #F3E5F5;
-                font-size: 15px !important;
-                color: #000 !important;
-                font-weight: 300;"
-            ></textarea>
-          </div>
-        </div>
-      </div>
+<body>
     <br>
-    <br>
-    <br>
-    <br>
-      <div class="d-flex row item-feedback justify-content-around" id="item_feedback" style="text-align: center;" class="row justify-content-around"><h4><strong>Items Feedback:</strong></h4></div>
+    <div class="d-flex align-items-center flex-column">
+        <div><h3 id="selectedItems">Selected Items</h3></div>
+        <div><button id="proceedToCheckoutID" class="btn btn-success"  disabled>Proceed to checkout</button> </div>
     </div>
-    <div style="text-align: center;">
-      <br>
-    <button type="submit" id="submit_feedback_btn" class="btn btn-dark">Submit Feedback</button>
+    <div class="row justify-content-around" id="placedConatiner">
+    </div>
     <br>
-    <br>
-  </div>
+    <hr>
+    <h3 style="text-align:center;">Menu Items</h3>
+    <div class="row justify-content-around" id="notPlacedConatiner">
+        
+    </div>
 </body>
 </html>

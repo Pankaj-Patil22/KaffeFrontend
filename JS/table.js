@@ -332,7 +332,7 @@ function proocedToMenu() {
   // for menu page to check before adding items to cart if the tables are booked or not
   localStorage.setItem("isTableBooked", true);
   if (localStorage.getItem("isMenuBooked") == "true") {
-    window.location.href = "checkoutTemp.html";
+    window.location.href = "checkout.html";
   } else {
     window.location.href = "menu.html";
   }

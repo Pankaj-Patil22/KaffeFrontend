@@ -56,7 +56,7 @@ function moveToPlacedSelection(item_id, price, name) {
 }
 
 async function fetchMenuData() {
-  let url = 'http://127.0.0.1:5000/getMenu/';
+  let url = "http://127.0.0.1:5000/getMenu/";
   try {
     let res = await fetch(url);
     return await res.json();
@@ -210,16 +210,17 @@ function proceedToCheckout() {
   localStorage.setItem("isMenuBooked", true);
   if (localStorage.getItem("isTableBooked") != "true")
     window.location.href = "tables.html";
-  else 
-    window.location.href = "checkoutTemp.html";
+  else window.location.href = "checkout.html";
 }
 
 document.getElementById("proceedToCheckoutID").addEventListener("click", () => {
   proceedToCheckout();
 });
 
-document.getElementById("proceedToCheckoutID").innerText = 
-localStorage.getItem("isTableBooked") != "true" ? "Book Table" : "Proceed to Checkout" 
+document.getElementById("proceedToCheckoutID").innerText =
+  localStorage.getItem("isTableBooked") != "true"
+    ? "Book Table"
+    : "Proceed to Checkout";
 
 // renderMenuData();
 renderRaj();
