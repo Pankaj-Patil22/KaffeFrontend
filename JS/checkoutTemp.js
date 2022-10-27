@@ -51,7 +51,6 @@ async function renderSummary() {
         foodImage.srcset = element1.image;
       }
     });
-    foodImage.srcset = imageData[i++]["image"];
     foodBookDiv.appendChild(foodImage);
     let foodNameContainer = document.createElement("div");
     foodNameContainer.classList.add(
