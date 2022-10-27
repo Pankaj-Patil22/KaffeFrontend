@@ -1,6 +1,5 @@
 // import Routes from "./routes.js";
 let imageData = {};
-let i = 0;
 
 async function renderSummary() {
   await fetch("http://13.233.161.125/getMenu/")
@@ -46,6 +45,12 @@ async function renderSummary() {
     foodBookDiv.classList.add("book");
     let foodImage = document.createElement("img");
     foodImage.classList.add("book-img");
+    //iterate over the image data and get the image
+    imageData.forEach((element1) => {
+      if (element1.item_id == element.itemId) {
+        foodImage.srcset = element1.image;
+      }
+    });
     foodImage.srcset = imageData[i++]["image"];
     foodBookDiv.appendChild(foodImage);
     let foodNameContainer = document.createElement("div");
