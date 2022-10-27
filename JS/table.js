@@ -29,6 +29,7 @@ async function getTableSessions() {
 }
 
 function updateTable(date, timeslot) {
+  console.log("inside update table", date);
   // considering date is given in format yyyy-mm-dd
   dateArr = date.split("-");
   url =
@@ -146,7 +147,10 @@ function getAvailableTimmings() {
     "choosenDate",
     document.getElementById("datefield").value
   );
-  console.log("choosen date", localStorage.getItem("choosenDate"));
+  console.log(
+    "choosen date in getavailable timings",
+    localStorage.getItem("choosenDate")
+  );
 
   localStorage.setItem(
     "choosenTimeSlot",
@@ -164,12 +168,14 @@ function getAvailableTimmings() {
   console.log("choosen time slot ", localStorage.getItem("choosenTimeSlot"));
 }
 
+//problem here should just check if user is trying to change date if yes then directly allow for next day and if no then check for current time and allow accordingly
 function timmingsAdjust(hour, today) {
   timeslot = document.getElementById("selectTS").value;
   console.log("today maybe", today);
 
   if (hour >= 8 && hour <= 20) {
     if (document.getElementById("datefield").value == getDateInFormat()) {
+      console.log("inside if");
       document.getElementById("datefield").setAttribute("min", today);
     }
     updateTable(today, timeslot);
@@ -180,6 +186,7 @@ function timmingsAdjust(hour, today) {
   }
 
   if (hour > 20) {
+    console.log("pass next day");
     var day = new Date();
     var nextDay = new Date(day);
     nextDay.setDate(day.getDate() + 1);
@@ -255,9 +262,17 @@ function updateData(change) {
   console.log("today new", today);
   if (change.id == "datefield") {
     getAvailableTimmings();
+    //check if date selected is today if yes then check for current time and allow accordingly
+    if (todayNew == today) {
+      console.log("might work");
+      timmingsAdjust(hour, todayNew);
+    }
+
+    updateTable(todayNew, 1);
+  } else if (change.id == "selectTS") {
+    updateTable(todayNew, hour - 7);
   }
   console.log("today old", today);
-  timmingsAdjust(hour, todayNew);
 
   localStorage.setItem(
     "choosenDate",
