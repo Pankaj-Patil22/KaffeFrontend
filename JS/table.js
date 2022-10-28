@@ -364,6 +364,15 @@ document
     "min",
     date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
   );
+console.log("before", date);
+date.setMonth(date.getMonth() + 1);
+console.log("after", date);
+document
+  .getElementById("datefield")
+  .setAttribute(
+    "max",
+    date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
+  );
 
 document.getElementById("tableSubmit").innerText =
   localStorage.getItem("isMenuBooked") == "true"

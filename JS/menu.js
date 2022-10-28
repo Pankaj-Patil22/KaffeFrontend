@@ -158,6 +158,8 @@ async function renderRaj() {
 }
 
 function increaseQuantity(item_id) {
+  if (items_placed[item_id].quantity >= 10) return;
+
   items_placed[item_id].quantity += 1;
   items_placed[item_id].totalPrice =
     items_placed[item_id].price * items_placed[item_id].quantity;
