@@ -1,4 +1,3 @@
-// import Routes from "./routes.js";
 let imageData = {};
 
 async function renderSummary() {
@@ -25,7 +24,6 @@ async function renderSummary() {
   Object.values(transData).forEach((element) => {
     totalDishesPrice += parseInt(element.totalPrice);
 
-    // let allOrderedFoodContainer = document.getElementById('summary');
     let allOrderedFoodContainer = document.createElement("div");
     allOrderedFoodContainer.id = "itemDiv" + element.itemId;
     let orderedFoodContainer = document.createElement("div");
@@ -45,7 +43,6 @@ async function renderSummary() {
     foodBookDiv.classList.add("book");
     let foodImage = document.createElement("img");
     foodImage.classList.add("book-img");
-    //iterate over the image data and get the image
     imageData.forEach((element1) => {
       if (element1.item_id == element.itemId) {
         foodImage.srcset = element1.image;
@@ -142,7 +139,6 @@ async function renderSummary() {
 }
 
 async function postData(url = "", data = {}) {
-  // Default options are marked with *
   console.log("http://13.233.161.125/transactionData/");
   let responseJson = "";
   const response = await fetch("http://13.233.161.125/transactionData/", {
@@ -164,7 +160,6 @@ async function postData(url = "", data = {}) {
       console.error("Error:", error);
       console.log("Error:");
     });
-  // return response.json(); // parses JSON response into native JavaScript objects
   return responseJson;
 }
 
@@ -177,8 +172,6 @@ document.getElementById("checkout").addEventListener("click", () => {
         localStorage.clear();
         window.location.href = "history.html";
       } else {
-        //click on the button to show the modal
-
         console.log("failed Boss", data);
         document.getElementById("popUpMsg").innerText =
           data.error_msg + "\nYou will be redirected to the tables page.";
@@ -190,12 +183,6 @@ document.getElementById("checkout").addEventListener("click", () => {
     }
   );
 });
-
-// document.getElementById("checkout").addEventListener("click", () => {
-//   console.log(localStorage.getItem("item_placed"));
-//   let dataToPost = makeThePostData();
-//   console.log("the dataToPost", dataToPost);
-// });
 
 document.getElementById("tempBtn").addEventListener("click", () => {
   console.log(localStorage.getItem("item_placed"));

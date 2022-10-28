@@ -88,7 +88,6 @@ async function renderRaj() {
       button.innerText = "View Feedback";
       localStorage.setItem("feedback_id", transaction.feedback_id);
       button.setAttribute("class", "btn btn-success");
-      // button.setAttribute("style","border: none; border-radius: 10px; background-color: #673AB7; color: #fff;padding: 8px 15px; margin: 20px 0px; cursor: pointer;")
       button.addEventListener("click", () => {
         console.log("feedback_id: " + transaction.feedback_id);
         localStorage.setItem("feedback_id", transaction.feedback_id);

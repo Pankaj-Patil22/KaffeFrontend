@@ -1,5 +1,3 @@
-// import Routes from "./routes.js";
-
 let menuData = [];
 let items_placed = {};
 
@@ -208,7 +206,6 @@ function proceedToCheckout() {
   localStorage.setItem("item_placed", JSON.stringify(items_placed));
   localStorage.setItem("firstname12", "Alen");
 
-  // this is for confirmation of menu selection is done
   localStorage.setItem("isMenuBooked", true);
   if (localStorage.getItem("isTableBooked") != "true")
     window.location.href = "tables.html";
@@ -224,6 +221,5 @@ document.getElementById("proceedToCheckoutID").innerText =
     ? "Book Table"
     : "Proceed to Checkout";
 
-// renderMenuData();
 renderRaj();
 localStorage.setItem("firstname", "Alen");

@@ -1,7 +1,7 @@
 console.log("You have connected...");
 
 yourGlobalVariable = [];
-// since at start the tables are not selected so we make table selection as false
+
 localStorage.setItem("isTableBooked", false);
 tablePrices = {};
 
@@ -31,7 +31,7 @@ async function getTableSessions() {
 
 function updateTable(date, timeslot) {
   console.log("inside update table", date);
-  // considering date is given in format yyyy-mm-dd
+
   dateArr = date.split("-");
   url =
     "http://13.233.161.125/tables/" +
@@ -50,10 +50,8 @@ function updateTable(date, timeslot) {
       Object.entries(data.table_reservation).forEach(([key, value]) => {
         if (value == 1) {
           document.querySelector("." + key).removeAttribute("disabled", "");
-          // console.log("inside date change remove disabled", key);
         } else if (value == 0) {
           document.querySelector("." + key).setAttribute("disabled", "");
-          // console.log("inside date change set disabled", key);
         }
       });
     });
@@ -169,7 +167,6 @@ function getAvailableTimmings() {
   console.log("choosen time slot ", localStorage.getItem("choosenTimeSlot"));
 }
 
-//problem here should just check if user is trying to change date if yes then directly allow for next day and if no then check for current time and allow accordingly
 function timmingsAdjust(hour, today) {
   timeslot = document.getElementById("selectTS").value;
   console.log("today maybe", today);
@@ -263,7 +260,6 @@ function updateData(change) {
   console.log("today new", today);
   if (change.id == "datefield") {
     getAvailableTimmings();
-    //check if date selected is today if yes then check for current time and allow accordingly
     if (todayNew == today) {
       console.log("might work");
       timmingsAdjust(hour, todayNew);
@@ -296,11 +292,6 @@ function updateData(change) {
     localStorage.getItem("choosenTimeSlotTime")
   );
 
-  // updateTable(
-  //   document.getElementById("datefield").value,
-  //   document.getElementById("selectTS").value
-  // );
-
   resetTableSelection();
 }
 
@@ -326,13 +317,11 @@ function proocedToMenu() {
   console.log("choosenTimeSlot", localStorage.getItem("choosenTimeSlot"));
   console.log("choosentables", localStorage.getItem("choosentables"));
 
-  // this doesnt work it takes by default the first date
   if (localStorage.getItem("choosenDate") == null) {
     alert("Please select a date");
     return;
   }
 
-  // this doesnt work it takes by default the first time slot
   if (localStorage.getItem("choosenTimeSlot") == null) {
     alert("Please select a time slot");
     return;
@@ -345,7 +334,6 @@ function proocedToMenu() {
     return;
   }
 
-  // for menu page to check before adding items to cart if the tables are booked or not
   localStorage.setItem("isTableBooked", true);
   if (localStorage.getItem("isMenuBooked") == "true") {
     window.location.href = "checkout.html";
@@ -384,4 +372,3 @@ document.getElementById("tableSubmit").innerText =
 
 getTablePrices();
 getTableSessions();
-// updateData();
