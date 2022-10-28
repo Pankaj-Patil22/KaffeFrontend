@@ -1,7 +1,8 @@
 console.log("You have connected...");
 
 yourGlobalVariable = [];
-
+// since at start the tables are not selected so we make table selection as false
+localStorage.setItem("isTableBooked", false);
 tablePrices = {};
 
 tableSessions = {};
@@ -363,6 +364,11 @@ document
     "min",
     date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
   );
+
+document.getElementById("tableSubmit").innerText =
+  localStorage.getItem("isMenuBooked") == "true"
+    ? "Proceed to Checkout"
+    : "Proceed to Menu";
 
 getTablePrices();
 getTableSessions();

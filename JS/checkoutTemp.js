@@ -177,7 +177,15 @@ document.getElementById("checkout").addEventListener("click", () => {
         localStorage.clear();
         window.location.href = "history.html";
       } else {
+        //click on the button to show the modal
+
         console.log("failed Boss", data);
+        document.getElementById("popUpMsg").innerText =
+          data.error_msg + "\nYou will be redirected to the tables page.";
+
+        localStorage.setItem("isMenuBooked", true);
+
+        document.getElementById("openPopup").click();
       }
     }
   );
@@ -208,4 +216,18 @@ function makeThePostData() {
   };
   return dataToPost;
 }
+
+document.getElementById("goToTable").addEventListener("click", () => {
+  window.location.href = "tables.html";
+});
+
+$(document).ready(function () {
+  $(".open").click(function () {
+    $(".pop-outer").fadeIn("slow");
+  });
+  $(".close").click(function () {
+    $(".pop-outer").fadeOut("slow");
+  });
+});
+
 renderSummary();

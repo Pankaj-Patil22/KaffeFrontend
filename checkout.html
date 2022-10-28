@@ -10,6 +10,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/material-ui/4.12.4/index.js" integrity="sha512-wEnX3bNd/CdyrOFR0KIGlHihK/w9x3/It8Vc18aymEF/F/f1q0Mq8T+GSxF1wYUACLEGECapuIYQdQlKY1LBJw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>  
   <script src="JS/checkoutTemp.js" defer></script>
   <script src="JS/checkoutTempNM.js" defer></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <link href="CSS/stylesCheckout.css" rel="stylesheet">
 </head>
 <body style="background-color: #FBFCFC ;">
@@ -119,13 +120,24 @@
                                 <span id="checkout">Proceed to pay</span>
                             </span>
                         </button>
+                        <!-- pop up code below  -->
+
+                        <div style="display: none;" class="pop-outer">
+                            <div class="pop-inner">
+                                <h2>We are sorry</h2>
+                                <p id="popUpMsg">Looks like something went wrong</p>
+                                <button class="btn-block btn btn-success close" id="goToTable">Let's go!</button>
+                            </div>
+                        </div>
+                        <!-- pop up code end -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div><br>
-        <button id="tempBtn">tempBtn</button>
+        <button id="tempBtn" hidden>tempBtn</button>
+        <button id="openPopup" class="open" hidden></button>
       </div>
 </div>
 </body>
