@@ -366,13 +366,16 @@ document
   );
 console.log("before", date);
 date.setMonth(date.getMonth() + 1);
+
+str = date.getMonth() + 1 + "";
+if (str.length == 1) {
+  str = "0" + str;
+}
+
 console.log("after", date);
 document
   .getElementById("datefield")
-  .setAttribute(
-    "max",
-    date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
-  );
+  .setAttribute("max", date.getFullYear() + "-" + str + "-" + date.getDate());
 
 document.getElementById("tableSubmit").innerText =
   localStorage.getItem("isMenuBooked") == "true"
