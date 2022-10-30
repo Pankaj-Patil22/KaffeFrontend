@@ -12,7 +12,7 @@ function changeItemRating(item_id) {
 
 function get_items_in_order(order_id) {
   console.log("order_id get_items_in_order", order_id);
-  const response = fetch(`http://127.0.0.1:5000/get_items_in_order/${order_id}`)
+  const response = fetch(`http://13.233.161.125/get_items_in_order/${order_id}`)
     .then((response) => response.json())
     .then((data) => {
       return data;
@@ -92,7 +92,7 @@ function submitFeedback(order_id) {
     };
 
     console.log("print feedback", feedback);
-    fetch("http://127.0.0.1:5000/feedback/", {
+    fetch("http://13.233.161.125/feedback/", {
       method: "POST",
       mode: "cors",
       credentials: "omit",
