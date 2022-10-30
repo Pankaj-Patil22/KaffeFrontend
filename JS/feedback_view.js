@@ -1,6 +1,6 @@
 const feedback_id = localStorage.getItem("feedback_id");
 if (feedback_id == null) {
-  window.location.href = "http://13.233.161.125/home/";
+  window.location.href = "http://127.0.0.1:5000/home/";
 }
 
 function renderOverallRating(feedback_id) {
@@ -27,10 +27,18 @@ function renderOverallRating(feedback_id) {
     input.setAttribute("value", data.rating);
     input.setAttribute("disabled", true);
     divInput.appendChild(input);
+
     let span = document.createElement("span");
     span.innerHTML = data.rating;
     divInput.appendChild(span);
     first_div.appendChild(divInput);
+
+    bookedTables = localStorage.getItem(
+      "tables_booked_for_transaction" + localStorage.getItem("transaction_id")
+    );
+    let tablesP = document.createElement("p");
+    tablesP.innerHTML = "<strong>Booked Tables:<strong> " + bookedTables;
+    divInput.appendChild(tablesP);
 
     let second_div = document.createElement("div");
     second_div.className = "overall-review";
@@ -49,12 +57,14 @@ function renderOverallRating(feedback_id) {
 function renderItemsFeedback(feedback_id) {
   console.log("renderItemsFeedback", feedback_id);
   getItemsFeedback(feedback_id).then((data) => {
+    console.log("data", data);
     let main_div = document.getElementById("items_feedback");
     const menu_items = getMenuItems();
+    console.log("menu_items", menu_items);
     data.forEach((item) => {
       menu_items.then((menu_item) => {
+        console.log("menu_item", menu_item);
         menu_item.forEach((menu_item) => {
-          console.log("menu_item id ", menu_item);
           console.log("item id ", item.item_id);
           if (menu_item.item_id == item.item_id) {
             console.log("item rating", item.rating);
@@ -67,6 +77,7 @@ function renderItemsFeedback(feedback_id) {
                 <img src="${menu_item.image}" alt="item image" style="width: 300px;height: 350px;"/>
                 </div>
                 <div class="item-name"><strong>${menu_item.name}</strong></div>
+                <div style="text-align: center;"><p><strong>Quantity:</strong> ${menu_item.quantity}</p></div>
                 <div class="item-rating">
                     <input type="range" id="item_rating_${item.item_id}" name="item_rating" value="${item.rating}" min="0" max="5" disabled/>
                     <span id="item_rating_value_${item.item_id}">${item.rating}</span>
@@ -85,7 +96,7 @@ function renderItemsFeedback(feedback_id) {
 
 async function getMenuItems() {
   return await fetch(
-    `http://13.233.161.125/get_items_in_order/${localStorage.getItem(
+    `http://127.0.0.1:5000/get_items_in_order/${localStorage.getItem(
       "order_id"
     )}`
   )
@@ -96,12 +107,12 @@ async function getMenuItems() {
 }
 
 async function getOverallFeedback(overall_feedback_id) {
-  let url = "http://13.233.161.125/get_overall_feedback/" + overall_feedback_id;
+  let url = "http://127.0.0.1:5000/get_overall_feedback/" + overall_feedback_id;
   return await fetchData(url);
 }
 
 async function getItemsFeedback(overall_feedback_id) {
-  let url = "http://13.233.161.125/get_items_feedback/" + overall_feedback_id;
+  let url = "http://127.0.0.1:5000/get_items_feedback/" + overall_feedback_id;
   console.log("getItemsFeedback", url);
   return await fetchData(url);
 }
@@ -117,3 +128,6 @@ async function fetchData(url) {
 
 renderOverallRating(feedback_id);
 renderItemsFeedback(feedback_id);
+
+document.getElementById("title").innerText =
+  localStorage.getItem("transaction_date");

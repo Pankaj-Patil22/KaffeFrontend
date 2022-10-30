@@ -18,10 +18,8 @@ html {
   position: relative;
   overflow: hidden;
   text-align: center;
-  border-bottom: 10px solid #807070;
+  border-bottom: 10px solid #000000;
 }
-
-
 
 .exit {
   position: relative;
@@ -29,7 +27,8 @@ html {
   justify-content: center;
   height: 15px;
 }
-.exit:before, .exit:after {
+.exit:before,
+.exit:after {
   content: "DOOR";
   font-size: 14px;
   line-height: 18px;
@@ -72,25 +71,25 @@ ol {
   margin-top: 2.5%;
 }
 .seat {
-    margin-block-end: 5%;
-  }
-.seat input[type=checkbox] {
+  margin-block-end: 5%;
+}
+.seat input[type="checkbox"] {
   position: absolute;
   opacity: 0;
 }
-.seat input[type=checkbox]:checked + label {
+.seat input[type="checkbox"]:checked + label {
   background: #bada55;
   -webkit-animation-name: rubberBand;
   animation-name: rubberBand;
   animation-duration: 300ms;
   animation-fill-mode: both;
 }
-.seat input[type=checkbox]:disabled + label {
+.seat input[type="checkbox"]:disabled + label {
   background: #8f8b8b;
   text-indent: -9999px;
   overflow: hidden;
 }
-.seat input[type=checkbox]:disabled + label:after {
+.seat input[type="checkbox"]:disabled + label:after {
   content: "X";
   text-indent: 0;
   position: absolute;
@@ -98,7 +97,7 @@ ol {
   left: 50%;
   transform: translate(-50%, 0%);
 }
-.seat input[type=checkbox]:disabled + label:hover {
+.seat input[type="checkbox"]:disabled + label:hover {
   box-shadow: none;
   cursor: not-allowed;
 }
@@ -198,99 +197,99 @@ ol {
 }
 
 .chair-1 {
-    position: absolute;
-    width: 10px;
-    height: 12.5px;
-    background-color: black;
-    background-color: #3e2f24;
-    border-radius: 13%/100px 100px 0 0;
-    perspective: 150px;
-    box-shadow: 0 3px 9pt rgba(0, 0, 0, 0.23), 0 3px 9pt rgba(0, 0, 0, 0.16);
-    left: 115px;
-    top: 30px;
-  }
+  position: absolute;
+  width: 10px;
+  height: 12.5px;
+  background-color: black;
+  background-color: #3e2f24;
+  border-radius: 13%/100px 100px 0 0;
+  perspective: 150px;
+  box-shadow: 0 3px 9pt rgba(0, 0, 0, 0.23), 0 3px 9pt rgba(0, 0, 0, 0.16);
+  left: 115px;
+  top: 30px;
+}
 
-  .chair-2 {
-    position: absolute;
-    width: 10px;
-    height: 12.5px;
-    background-color: black;
-    background-color: #3e2f24;
-    border-radius: 13%/100px 100px 0 0;
-    perspective: 150px;
-    box-shadow: 0 3px 9pt rgba(0, 0, 0, 0.23), 0 3px 9pt rgba(0, 0, 0, 0.16);
-    left: -1px;
-    top: 30px;
-  }
+.chair-2 {
+  position: absolute;
+  width: 10px;
+  height: 12.5px;
+  background-color: black;
+  background-color: #3e2f24;
+  border-radius: 13%/100px 100px 0 0;
+  perspective: 150px;
+  box-shadow: 0 3px 9pt rgba(0, 0, 0, 0.23), 0 3px 9pt rgba(0, 0, 0, 0.16);
+  left: -1px;
+  top: 30px;
+}
 
-  .chair-3 {
-    position: absolute;
-    width: 10px;
-    height: 12.5px;
-    background-color: black;
-    background-color: #3e2f24;
-    border-radius: 13%/100px 100px 0 0;
-    perspective: 150px;
-    box-shadow: 0 3px 9pt rgba(0, 0, 0, 0.23), 0 3px 9pt rgba(0, 0, 0, 0.16);
-    left: 60px;
-    top: 0px;
-  }
+.chair-3 {
+  position: absolute;
+  width: 10px;
+  height: 12.5px;
+  background-color: black;
+  background-color: #3e2f24;
+  border-radius: 13%/100px 100px 0 0;
+  perspective: 150px;
+  box-shadow: 0 3px 9pt rgba(0, 0, 0, 0.23), 0 3px 9pt rgba(0, 0, 0, 0.16);
+  left: 60px;
+  top: 0px;
+}
 
-  .chair-4 {
-    position: absolute;
-    width: 10px;
-    height: 12.5px;
-    background-color: black;
-    background-color: #3e2f24;
-    border-radius: 13%/100px 100px 0 0;
-    perspective: 150px;
-    box-shadow: 0 3px 9pt rgba(0, 0, 0, 0.23), 0 3px 9pt rgba(0, 0, 0, 0.16);
-    left: 60px;
-    top: 60px;
-  }
+.chair-4 {
+  position: absolute;
+  width: 10px;
+  height: 12.5px;
+  background-color: black;
+  background-color: #3e2f24;
+  border-radius: 13%/100px 100px 0 0;
+  perspective: 150px;
+  box-shadow: 0 3px 9pt rgba(0, 0, 0, 0.23), 0 3px 9pt rgba(0, 0, 0, 0.16);
+  left: 60px;
+  top: 60px;
+}
 
-  .tableAvailable {
-    position: absolute;
-    width: 60px;
-    height: 25px;
-    background-color: #1098d6;
-    left: 200px;
-    top: 100px;
-  }
-  .tableUnavailable {
-    position: absolute;
-    width: 80px;
-    height: 25px;
-    background-color: #8f8b8b;
-    left: 400px;
-    top: 100px;
-  }
-  .tableSelected {
-    position: absolute;
-    width: 60px;
-    height: 25px;
-    background-color: #bada55;
-    left: 600px;
-    top: 100px;
-  }
+.tableAvailable {
+  position: absolute;
+  width: 60px;
+  height: 25px;
+  background-color: #1098d6;
+  left: 200px;
+  top: 100px;
+}
+.tableUnavailable {
+  position: absolute;
+  width: 80px;
+  height: 25px;
+  background-color: #8f8b8b;
+  left: 400px;
+  top: 100px;
+}
+.tableSelected {
+  position: absolute;
+  width: 60px;
+  height: 25px;
+  background-color: #bada55;
+  left: 600px;
+  top: 100px;
+}
 
-  .box {
-    display: flex;
-    align-items: stretch;
-  }
+.box {
+  display: flex;
+  align-items: stretch;
+}
 
-  .card{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap:10px;
-    border: 0.3vw solid seashell;
-    box-shadow: 1px 5px 10px 1px rgb(144, 200, 220);
-    border-radius: 2vmin;
-  }
+.card {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  border: 0.3vw solid seashell;
+  box-shadow: 1px 5px 10px 1px rgb(144, 200, 220);
+  border-radius: 2vmin;
+}
 
-  .card-deck{
-    margin: auto;
-    width: 90%;
-    padding: 10px;
-  }
+.card-deck {
+  margin: auto;
+  width: 90%;
+  padding: 10px;
+}

@@ -1,5 +1,7 @@
 console.log("You have connected...");
 
+bookedTablesForTransaction = {};
+
 const user_id = 1;
 function padTo2Digits(num) {
   return num.toString().padStart(2, "0");
@@ -19,7 +21,21 @@ function convertMsToTime(milliseconds) {
 }
 
 async function fetchTransactionData() {
-  let url = "http://13.233.161.125/getSuccessfullTransactions/" + user_id;
+  let url = "http://127.0.0.1:5000/getSuccessfullTransactions/" + user_id;
+  try {
+    let res = await fetch(url);
+    return await res.json();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function fetchTablesBookedForTransaction(tableId, transactionId) {
+  let url =
+    "http://127.0.0.1:5000/getTablesBookedForTransaction/" +
+    tableId +
+    "/" +
+    transactionId;
   try {
     let res = await fetch(url);
     return await res.json();
@@ -50,8 +66,11 @@ async function renderRaj() {
     p.innerHTML =
       "<strong>Table Price: </strong>" +
       transaction.table_total +
+      "<br>" +
       "<strong>  Order Price: </strong>" +
       transaction.order_total;
+    p.setAttribute("id", transaction.transaction_id);
+
     div.appendChild(p);
 
     var d1 = new Date(); //"now"
@@ -82,6 +101,11 @@ async function renderRaj() {
         console.log("order_id: " + transaction.order_id);
         console.log("transaction_id: " + transaction.transaction_id);
         localStorage.setItem("transaction_id", transaction.transaction_id);
+        localStorage.setItem("transaction_date", transaction.created);
+        localStorage.setItem(
+          "tables_booked_for_transaction" + transaction.transaction_id,
+          bookedTablesForTransaction[transaction.transaction_id]
+        );
         window.location.href = "feedback.html";
       });
     } else {
@@ -92,13 +116,34 @@ async function renderRaj() {
         console.log("feedback_id: " + transaction.feedback_id);
         localStorage.setItem("feedback_id", transaction.feedback_id);
         localStorage.setItem("order_id", transaction.order_id);
+        localStorage.setItem("transaction_date", transaction.created);
+        localStorage.setItem(
+          "tables_booked_for_transaction" + transaction.transaction_id,
+          bookedTablesForTransaction[transaction.transaction_id]
+        );
         window.location.href = "feedback_view.html";
       });
     }
 
     div.appendChild(button);
     document.getElementById("history").appendChild(div);
+
+    str = await setTableData(transaction.table_id, transaction.transaction_id);
+    bookedTablesForTransaction[transaction.transaction_id] = str;
   }
+}
+
+async function setTableData(tableId, transactionId) {
+  tableData = await fetchTablesBookedForTransaction(tableId, transactionId);
+  str = "";
+  for (let table of tableData) {
+    str += table + ",";
+  }
+  str = str.slice(0, -1);
+  let p = document.getElementById(transactionId);
+  text = p.innerHTML;
+  p.innerHTML = "<strong>Booked Tables: </strong>" + str + "<br>" + text;
+  return str;
 }
 
 renderRaj();

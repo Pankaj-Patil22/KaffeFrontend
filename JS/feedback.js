@@ -12,7 +12,7 @@ function changeItemRating(item_id) {
 
 function get_items_in_order(order_id) {
   console.log("order_id get_items_in_order", order_id);
-  const response = fetch(`http://13.233.161.125/get_items_in_order/${order_id}`)
+  const response = fetch(`http://127.0.0.1:5000/get_items_in_order/${order_id}`)
     .then((response) => response.json())
     .then((data) => {
       return data;
@@ -22,7 +22,7 @@ function get_items_in_order(order_id) {
 
 function create_items(order_id, transaction_id) {
   const items = get_items_in_order(order_id);
-
+  console.log("items", items);
   items.then((data) => {
     data.forEach((item) => {
       const item_div = document.createElement("div");
@@ -33,10 +33,12 @@ function create_items(order_id, transaction_id) {
       item_div.innerHTML = `
 <div id=${item.item_id} style ="margin: 40px 0px; padding: 40px 50px; border-radius: 20px; border: none; box-shadow: 1px 5px 10px 1px rgb(144, 200, 220); width:80%;" class="justify-content-center card gy-5">
     <div class="item-image">
-    <div class="item-name"><strong>${item.name}</strong></div>
     <img src="${item.image}" alt="item image" style="width: 300px;height: 350px;"/>
+    <div class="item-name"><strong>${item.name}</strong></div>
+    <div style="text-align: center;"><p><strong>Quantity:</strong> ${item.quantity}</p></div>
     </div>
     <div class="item-rating">
+        <div class="item-rating-label">Rate us based on what your taste buds say</div>
         <input type="range" id="item_rating_${item.item_id}" name="item_rating" value="0" min="0" max="5" onchange="changeItemRating(${item.item_id})"/>
         <span id="item_rating_value_${item.item_id}">0</span>
     </div>
@@ -90,7 +92,7 @@ function submitFeedback(order_id) {
     };
 
     console.log("print feedback", feedback);
-    fetch("http://13.233.161.125/feedback/", {
+    fetch("http://127.0.0.1:5000/feedback/", {
       method: "POST",
       mode: "cors",
       credentials: "omit",
@@ -120,3 +122,12 @@ create_items(
   localStorage.getItem("order_id"),
   localStorage.getItem("transaction_id")
 );
+
+bookedTables = localStorage.getItem(
+  "tables_booked_for_transaction" + localStorage.getItem("transaction_id")
+);
+document.getElementById("bookedTable").innerHTML =
+  "<strong>Booked Tables:<strong> " + bookedTables;
+
+document.getElementById("title").innerText =
+  localStorage.getItem("transaction_date");

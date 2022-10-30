@@ -8,7 +8,7 @@ tablePrices = {};
 tableSessions = {};
 
 async function getTablePrices() {
-  await fetch("http://13.233.161.125/tables/price")
+  await fetch("http://127.0.0.1:5000/tables/price")
     .then((Response) => Response.json())
     .then((data) => {
       console.log(data.prices);
@@ -19,7 +19,7 @@ async function getTablePrices() {
 }
 
 async function getTableSessions() {
-  await fetch("http://13.233.161.125/getTableSessions")
+  await fetch("http://127.0.0.1:5000/getTableSessions")
     .then((Response) => Response.json())
     .then((data) => {
       console.log(data);
@@ -34,7 +34,7 @@ function updateTable(date, timeslot) {
 
   dateArr = date.split("-");
   url =
-    "http://13.233.161.125/tables/" +
+    "http://127.0.0.1:5000/tables/" +
     dateArr[0] +
     "/" +
     dateArr[1] +

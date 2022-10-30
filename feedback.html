@@ -41,7 +41,6 @@
                       <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"  style="color: #e0eff1; font-size: 25px; font-size: 25px; font-family:Garamond""><strong>Orders</strong></a>
                       <ul class="dropdown-menu dropdown-menu-end">
                           <li><a class="dropdown-item" href="history.html">Order History</a></li>
-                          <li><a class="dropdown-item" href="status.html">Order Status</a></li>
                       </ul>
                   </li>
               </ul>
@@ -49,10 +48,18 @@
       </div>
   </nav>
   <body>
+    <p>
+      <br>
+    </p>
+
+    <div style="text-align: center;"><h3 id="title"></h3></div>
+
     <div class="wrapper-div ">
       <div class="Overall-feedback row justify-content-around" id="overall_feedback">
         <div style ="width:50rem; margin: 40px 0px; padding: 40px 50px; border-radius: 20px; border: none; box-shadow: 1px 5px 10px 1px rgb(144, 200, 220);">
           <div style="text-align: center;"><h4><strong>Overall Rating:</strong></h4></div>
+          <div style="text-align: center;"><p>Rate us based on your experience and the service we provided</p></div>
+          <div style="text-align: center;"><p id="bookedTable"></p></div>
           <div class="overall-rating" style="text-align: center;">
             <input
               type="range"
