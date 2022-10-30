@@ -1,5 +1,5 @@
 async function fetchTransactionData(transaction_id) {
-  let url = "http://127.0.0.1:5000/getTansactionData/" + transaction_id;
+  let url = "http://13.233.161.125/getTansactionData/" + transaction_id;
   try {
     let res = await fetch(url);
     return await res.json();

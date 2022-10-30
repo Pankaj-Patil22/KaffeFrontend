@@ -1,7 +1,7 @@
 let imageData = {};
 
 async function renderSummary() {
-  await fetch("http://127.0.0.1:5000/getMenu/")
+  await fetch("http://13.233.161.125/getMenu/")
     .then((Response) => Response.json())
     .then((data) => {
       imageData = data;
@@ -139,9 +139,9 @@ async function renderSummary() {
 }
 
 async function postData(url = "", data = {}) {
-  console.log("http://127.0.0.1:5000/transactionData/");
+  console.log("http://13.233.161.125/transactionData/");
   let responseJson = "";
-  const response = await fetch("http://127.0.0.1:5000/transactionData/", {
+  const response = await fetch("http://13.233.161.125/transactionData/", {
     method: "POST",
     mode: "cors",
     credentials: "omit",
@@ -164,7 +164,7 @@ async function postData(url = "", data = {}) {
 }
 
 document.getElementById("checkout").addEventListener("click", () => {
-  postData("http://127.0.0.1:5000/transactionData/", makeThePostData()).then(
+  postData("http://13.233.161.125/transactionData/", makeThePostData()).then(
     (data) => {
       console.log(data); // JSON data parsed by `data.json()` call
       if (data.success == true) {

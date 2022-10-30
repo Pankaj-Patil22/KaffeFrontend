@@ -21,7 +21,7 @@ function convertMsToTime(milliseconds) {
 }
 
 async function fetchTransactionData() {
-  let url = "http://127.0.0.1:5000/getSuccessfullTransactions/" + user_id;
+  let url = "http://13.233.161.125/getSuccessfullTransactions/" + user_id;
   try {
     let res = await fetch(url);
     return await res.json();
@@ -32,7 +32,7 @@ async function fetchTransactionData() {
 
 async function fetchTablesBookedForTransaction(tableId, transactionId) {
   let url =
-    "http://127.0.0.1:5000/getTablesBookedForTransaction/" +
+    "http://13.233.161.125/getTablesBookedForTransaction/" +
     tableId +
     "/" +
     transactionId;
