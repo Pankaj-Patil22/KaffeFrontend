@@ -343,27 +343,57 @@ function proocedToMenu() {
 }
 
 let date = new Date();
-document.getElementById("datefield").value =
-  date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
 
-document
-  .getElementById("datefield")
-  .setAttribute(
-    "min",
-    date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
-  );
-console.log("before", date);
-date.setMonth(date.getMonth() + 1);
-
-str = date.getMonth() + 1 + "";
-if (str.length == 1) {
-  str = "0" + str;
+month = date.getMonth() + 1 + "";
+if (month.length == 1) {
+  month = "0" + month;
 }
 
 console.log("after", date);
+
+lastDate = date.getDate() + 1 + "";
+if (lastDate.length == 1) {
+  lastDate = "0" + lastDate;
+}
+
 document
   .getElementById("datefield")
-  .setAttribute("max", date.getFullYear() + "-" + str + "-" + date.getDate());
+  .setAttribute("value", date.getFullYear() + "-" + month + "-" + lastDate);
+
+  month = date.getMonth() + 1 + "";
+  if (month.length == 1) {
+    month = "0" + month;
+  }
+  
+  console.log("after", date);
+  
+  lastDate = date.getDate() + 1 + "";
+  if (lastDate.length == 1) {
+    lastDate = "0" + lastDate;
+  }
+  
+  document
+    .getElementById("datefield")
+    .setAttribute("min", date.getFullYear() + "-" + month + "-" + lastDate);
+    
+console.log("before", date);
+date.setMonth(date.getMonth() + 1);
+
+month = date.getMonth() + 1 + "";
+if (month.length == 1) {
+  month = "0" + month;
+}
+
+console.log("after", date);
+
+lastDate = date.getDate() + 1 + "";
+if (lastDate.length == 1) {
+  lastDate = "0" + lastDate;
+}
+
+document
+  .getElementById("datefield")
+  .setAttribute("max", date.getFullYear() + "-" + month + "-" + lastDate);
 
 document.getElementById("tableSubmit").innerText =
   localStorage.getItem("isMenuBooked") == "true"
