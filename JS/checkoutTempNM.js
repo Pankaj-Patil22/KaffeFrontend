@@ -30,7 +30,7 @@ function minusQuantDish(element) {
     delete transData[element.id];
     console.log(Object.keys(transData).length);
     if (Object.keys(transData).length == 0) {
-      window.location.href = "menu.html";
+      window.location.href = "http://43.206.120.217/menu";
     }
   } else if (parseInt(quant.innerText) > 0) {
     total.innerText = parseInt(quant.innerText) * parseInt(price.innerText);

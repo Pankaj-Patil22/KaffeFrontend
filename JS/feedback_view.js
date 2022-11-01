@@ -1,6 +1,6 @@
 const feedback_id = localStorage.getItem("feedback_id");
 if (feedback_id == null) {
-  window.location.href = "http://13.233.161.125/home/";
+  window.location.href = "http://43.206.120.217/home/";
 }
 
 function renderOverallRating(feedback_id) {
@@ -85,7 +85,7 @@ function renderItemsFeedback(feedback_id) {
 
 async function getMenuItems() {
   return await fetch(
-    `http://13.233.161.125/get_items_in_order/${localStorage.getItem(
+    `http://43.206.120.217/get_items_in_order/${localStorage.getItem(
       "order_id"
     )}`
   )
@@ -96,12 +96,12 @@ async function getMenuItems() {
 }
 
 async function getOverallFeedback(overall_feedback_id) {
-  let url = "http://13.233.161.125/get_overall_feedback/" + overall_feedback_id;
+  let url = "http://43.206.120.217/get_overall_feedback/" + overall_feedback_id;
   return await fetchData(url);
 }
 
 async function getItemsFeedback(overall_feedback_id) {
-  let url = "http://13.233.161.125/get_items_feedback/" + overall_feedback_id;
+  let url = "http://43.206.120.217/get_items_feedback/" + overall_feedback_id;
   console.log("getItemsFeedback", url);
   return await fetchData(url);
 }

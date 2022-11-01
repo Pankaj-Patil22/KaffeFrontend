@@ -12,7 +12,7 @@ function changeItemRating(item_id) {
 
 function get_items_in_order(order_id) {
   console.log("order_id get_items_in_order", order_id);
-  const response = fetch(`http://13.233.161.125/get_items_in_order/${order_id}`)
+  const response = fetch(`http://43.206.120.217/get_items_in_order/${order_id}`)
     .then((response) => response.json())
     .then((data) => {
       return data;
@@ -90,7 +90,7 @@ function submitFeedback(order_id) {
     };
 
     console.log("print feedback", feedback);
-    fetch("http://13.233.161.125/feedback/", {
+    fetch("http://43.206.120.217/feedback/", {
       method: "POST",
       mode: "cors",
       credentials: "omit",
@@ -103,7 +103,7 @@ function submitFeedback(order_id) {
       .then((data) => {
         console.log("Success:", data);
         responseJson = data;
-        window.location.href = "history.html";
+        window.location.href = "http://43.206.120.217/history";
       })
       .catch((error) => {
         console.error("Error:", error);

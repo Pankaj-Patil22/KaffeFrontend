@@ -8,7 +8,7 @@ tablePrices = {};
 tableSessions = {};
 
 async function getTablePrices() {
-  await fetch("http://13.233.161.125/tables/price")
+  await fetch("http://43.206.120.217/tables/price")
     .then((Response) => Response.json())
     .then((data) => {
       console.log(data.prices);
@@ -19,7 +19,7 @@ async function getTablePrices() {
 }
 
 async function getTableSessions() {
-  await fetch("http://13.233.161.125/getTableSessions")
+  await fetch("http://43.206.120.217/getTableSessions")
     .then((Response) => Response.json())
     .then((data) => {
       console.log(data);
@@ -34,7 +34,7 @@ function updateTable(date, timeslot) {
 
   dateArr = date.split("-");
   url =
-    "http://13.233.161.125/tables/" +
+    "http://43.206.120.217/tables/" +
     dateArr[0] +
     "/" +
     dateArr[1] +
@@ -169,9 +169,9 @@ function getAvailableTimmings() {
 
 function timmingsAdjust(hour, today) {
   timeslot = document.getElementById("selectTS").value;
-  console.log("today maybe", today);
+  console.log("today maybe", today, hour);
 
-  if (hour >= 8 && hour <= 20) {
+  if (hour >= 8 && hour < 19) {
     if (document.getElementById("datefield").value == getDateInFormat()) {
       console.log("inside if");
       document.getElementById("datefield").setAttribute("min", today);
@@ -183,7 +183,7 @@ function timmingsAdjust(hour, today) {
     updateTable(today, 1);
   }
 
-  if (hour > 20) {
+  if (hour >= 19) {
     console.log("pass next day");
     var day = new Date();
     var nextDay = new Date(day);
@@ -206,6 +206,7 @@ function timmingsAdjust(hour, today) {
       document.getElementById("datefield").setAttribute("min", passNextDay);
     }
     document.getElementById("datefield").value = passNextDay;
+
     getAvailableTimmings();
   }
 }
@@ -336,34 +337,59 @@ function proocedToMenu() {
 
   localStorage.setItem("isTableBooked", true);
   if (localStorage.getItem("isMenuBooked") == "true") {
-    window.location.href = "checkout.html";
+    window.location.href = "http://43.206.120.217/checkout";
   } else {
-    window.location.href = "menu.html";
+    window.location.href = "http://43.206.120.217/menu";
   }
 }
 
 let date = new Date();
-document.getElementById("datefield").value =
-  date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+monthStr = date.getMonth() + 1 + "";
+if (monthStr.length == 1) {
+  monthStr = "0" + monthStr;
+}
 
-document
-  .getElementById("datefield")
-  .setAttribute(
-    "min",
-    date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate()
-  );
-console.log("before", date);
-date.setMonth(date.getMonth() + 1);
-
-str = date.getMonth() + 1 + "";
-if (str.length == 1) {
-  str = "0" + str;
+dateStr = date.getDate() + "";
+if (dateStr.length == 1) {
+  dateStr = "0" + dateStr;
 }
 
 console.log("after", date);
 document
   .getElementById("datefield")
-  .setAttribute("max", date.getFullYear() + "-" + str + "-" + date.getDate());
+  .setAttribute("value", date.getFullYear() + "-" + monthStr + "-" + dateStr);
+
+  monthStr = date.getMonth() + 1 + "";
+  if (monthStr.length == 1) {
+    monthStr = "0" + monthStr;
+  }
+  
+  dateStr = date.getDate() + "";
+  if (dateStr.length == 1) {
+    dateStr = "0" + dateStr;
+  }
+  
+  console.log("after", date);
+  document
+    .getElementById("datefield")
+    .setAttribute("min", date.getFullYear() + "-" + monthStr + "-" + dateStr);
+console.log("before", date);
+date.setMonth(date.getMonth() + 1);
+
+monthStr = date.getMonth() + 1 + "";
+if (monthStr.length == 1) {
+  monthStr = "0" + monthStr;
+}
+
+dateStr = date.getDate() + "";
+if (dateStr.length == 1) {
+  dateStr = "0" + dateStr;
+}
+
+console.log("after", date);
+document
+  .getElementById("datefield")
+  .setAttribute("max", date.getFullYear() + "-" + monthStr + "-" + dateStr);
 
 document.getElementById("tableSubmit").innerText =
   localStorage.getItem("isMenuBooked") == "true"

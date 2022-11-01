@@ -1,5 +1,5 @@
 const Routes = {
-  menu: "http://13.233.161.125/getMenu/",
-  transactionData: "http://13.233.161.125/transactionData/",
+  menu: "http://43.206.120.217/getMenu/",
+  transactionData: "http://43.206.120.217/transactionData/",
 };
 export default Routes;

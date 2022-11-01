@@ -19,7 +19,7 @@ function convertMsToTime(milliseconds) {
 }
 
 async function fetchTransactionData() {
-  let url = "http://13.233.161.125/getSuccessfullTransactions/" + user_id;
+  let url = "http://43.206.120.217/getSuccessfullTransactions/" + user_id;
   try {
     let res = await fetch(url);
     return await res.json();
@@ -71,7 +71,7 @@ async function renderRaj() {
       console.log("order_id: " + transaction.order_id);
       console.log("transaction_id: " + transaction.transaction_id);
       localStorage.setItem("transaction_id", transaction.transaction_id);
-      window.location.href = "feedback.html";
+      window.location.href = "http://43.206.120.217/feedback";
     });
 
     if (transaction.feedback_id == null) {
@@ -82,7 +82,7 @@ async function renderRaj() {
         console.log("order_id: " + transaction.order_id);
         console.log("transaction_id: " + transaction.transaction_id);
         localStorage.setItem("transaction_id", transaction.transaction_id);
-        window.location.href = "feedback.html";
+        window.location.href = "http://43.206.120.217/feedback";
       });
     } else {
       button.innerText = "View Feedback";
@@ -92,7 +92,7 @@ async function renderRaj() {
         console.log("feedback_id: " + transaction.feedback_id);
         localStorage.setItem("feedback_id", transaction.feedback_id);
         localStorage.setItem("order_id", transaction.order_id);
-        window.location.href = "feedback_view.html";
+        window.location.href = "http://43.206.120.217/feedbackView";
       });
     }
 
